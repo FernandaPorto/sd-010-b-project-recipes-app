@@ -10,9 +10,14 @@ import { getRandomData,
   getDataByCategory,
   getDataIngredients,
 } from '../services/apiRequest';
+import Loading from '../components/Loading';
+import OtherLoader from '../components/OtherLoader';
 
 const TWELVE = 12;
 const FIVE = 5;
+const LOADER_TIMER = 3000;
+const CATEGORY_LOADER = 2000;
+
 export default function MainPage() {
   const { path } = useRouteMatch();
 
@@ -27,12 +32,16 @@ export default function MainPage() {
     ingredientsResults,
   } = useContext(RecipesContext);
 
+  const [isLoading, setLoader] = useState(false);
+  const [isLoadingCat, setLoaderCat] = useState(false);
   const [dataResult, setDataResult] = useState([]);
   const [categoriesList, setCategoriesList] = useState([]);
   const [renderer, setRenderer] = useState([]);
   const [toggle, setToggle] = useState({ status: false, category: '' });
+  const [categorySelected, setCatSelect] = useState('All');
 
   useEffect(() => {
+    setLoader(true);
     if (ingredientsResults.length === 0) {
       getRandomData(domain)
         .then((res) => {
@@ -45,37 +54,51 @@ export default function MainPage() {
       .then((res) => {
         setCategoriesList(res[firstKey].filter((_e, index) => index < FIVE));
       });
+
+    setTimeout(() => { setLoader(false); }, LOADER_TIMER);
   }, [limit, firstKey, domain, ingredientsResults]);
 
   useEffect(() => {
     if (searchResult && searchResult.length > 1) {
+      setLoaderCat(true);
+      setCatSelect('All');
       setRenderer(searchResult.filter((_e, index) => index < limit));
     }
+    setTimeout(() => { setLoaderCat(false); }, LOADER_TIMER);
   }, [searchResult, limit]);
 
   useEffect(() => {
     if (ingredientsResults.length) {
+      setLoaderCat(true);
+      setCatSelect('All');
       getDataIngredients(domain, ingredientsResults).then((res) => {
         setRenderer(res[firstKey].filter((_e, index) => index < limit));
       });
+      setTimeout(() => { setLoaderCat(false); }, LOADER_TIMER);
     }
   }, [ingredientsResults, domain, firstKey, limit]);
 
-  function handleCategoryFilter(category) {
+  async function handleCategoryFilter(category) {
+    setLoaderCat(true);
+    setCatSelect(category);
     if (toggle.category === category) {
       setToggle({ status: false, category: '' });
       setRenderer(dataResult.filter((_e, index) => index < limit));
     } else {
-      getDataByCategory(domain, category)
+      await getDataByCategory(domain, category)
         .then((res) => {
           setRenderer(res[firstKey].filter((_e, index) => index < limit));
         });
       setToggle({ status: true, category });
     }
+    setTimeout(() => { setLoaderCat(false); }, CATEGORY_LOADER);
   }
 
   function handleAllClick() {
+    setLoaderCat(true);
+    setCatSelect('All');
     setRenderer(dataResult.filter((_e, index) => index < limit));
+    setTimeout(() => { setLoaderCat(false); }, CATEGORY_LOADER);
   }
 
   function handleMoreCards() {
@@ -83,23 +106,46 @@ export default function MainPage() {
   }
 
   return (
-    <>
-      <Header />
-      {categoriesList.map((category) => (
-        <Button
-          data-testid={ `${category.strCategory}-category-filter` }
-          key={ category.strCategory }
-          onClick={ () => handleCategoryFilter(category.strCategory) }
-        >
-          {category.strCategory}
-        </Button>))}
-      <Button data-testid="All-category-filter" onClick={ handleAllClick }>All</Button>
-      {renderer.map((item, i) => (
-        <Link key={ i } to={ `${path}/${item[searchId]}` }>
-          <Card mealOrDrink={ item } index={ i } testId="recipe" />
-        </Link>))}
-      <button type="button" onClick={ handleMoreCards }>More Recipes</button>
-      <Footer />
-    </>
+    isLoading ? (<Loading />)
+      : (
+        <section className="container-mainPaige">
+          <Header />
+
+          <section className="container-buttons">
+            {categoriesList.map((category) => (
+              <Button
+                className="category-buttons"
+                data-testid={ `${category.strCategory}-category-filter` }
+                key={ category.strCategory }
+                onClick={ () => handleCategoryFilter(category.strCategory) }
+              >
+                {category.strCategory.split(/\W/g)[0]}
+              </Button>))}
+            <Button
+              className="category-buttons"
+              data-testid="All-category-filter"
+              onClick={ handleAllClick }
+            >
+              All
+            </Button>
+          </section>
+
+          {isLoadingCat ? (<OtherLoader category={ categorySelected } />)
+            : (
+              <>
+                {renderer.map((item, i) => (
+                  <Link
+                    className="link-card"
+                    key={ i }
+                    to={ `${path}/${item[searchId]}` }
+                  >
+                    <Card mealOrDrink={ item } index={ i } testId="recipe" />
+                  </Link>))}
+                <button type="button" onClick={ handleMoreCards }>More Recipes</button>
+              </>
+            )}
+          <Footer />
+        </section>
+      )
   );
 }
