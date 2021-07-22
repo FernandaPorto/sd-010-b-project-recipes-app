@@ -1,0 +1,24 @@
+.container-header {
+  background-color: #ab444b;
+  color: #614343;
+  height: 10vh;
+  width: 100vw;
+}
+
+.button-search-icon {
+  background-color: transparent;
+  border: none;
+}
+
+.search-icon {
+  width: 8vw;
+}
+
+.title-header {
+  font-size: 40px;
+}
+
+.container-header-search {
+  background-color: #ab444b;
+  width: 100vw;
+}
