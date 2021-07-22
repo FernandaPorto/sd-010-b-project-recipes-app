@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 function VideoPlayer({ videoLink, testID, recipeTitle }) {
+  console.log(videoLink);
   return (
     <div className="video-player">
       <iframe
@@ -16,7 +17,7 @@ function VideoPlayer({ videoLink, testID, recipeTitle }) {
         frameBorder="0"
         width="853"
         height="480"
-        src={ videoLink }
+        src={ videoLink.replace('watch?v=', 'embed/') }
         title={ recipeTitle }
       />
     </div>
