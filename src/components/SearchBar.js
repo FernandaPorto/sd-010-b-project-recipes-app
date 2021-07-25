@@ -1,5 +1,4 @@
 import React, { useState, useContext } from 'react';
-import { Button } from 'react-bootstrap';
 import { useRouteMatch, useHistory } from 'react-router-dom';
 import { fetchAPI } from '../services/apiRequest';
 import RecipesContext from '../context/RecipesContext';
@@ -92,13 +91,13 @@ export default function SearchBar() {
           onChange={ handleChange }
         />
       </label>
-      <Button
+      <button
         type="button"
         data-testid="exec-search-btn"
         onClick={ handleClick }
       >
         Search
-      </Button>
+      </button>
     </div>
   );
 }

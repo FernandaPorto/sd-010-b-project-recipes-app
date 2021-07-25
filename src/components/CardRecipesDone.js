@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 import shareIcon from '../images/shareIcon.svg';
@@ -51,7 +50,7 @@ export default function CardRecipesDone({ mealOrDrink, index }) {
 
       <p data-testid={ `${index}-horizontal-done-date` }>{doneDate}</p>
 
-      <Button onClick={ handleShare }>
+      <button type="button" onClick={ handleShare }>
         {!copy
           ? (
             <img
@@ -60,7 +59,7 @@ export default function CardRecipesDone({ mealOrDrink, index }) {
               alt={ name }
             />)
           : (<p data-testid={ `${index}-horizontal-share-btn` }>Link copiado!</p>)}
-      </Button>
+      </button>
 
       {typeof tags === 'object' && tags.length > 0
         ? tags.map((tag, i) => (

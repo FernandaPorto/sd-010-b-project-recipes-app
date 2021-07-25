@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Button } from 'react-bootstrap';
 import Header from '../components/Header';
 import CardFavorit from '../components/CardFavorit';
 import RecipesContext from '../context/RecipesContext';
@@ -34,14 +33,29 @@ export default function FavoritesRecipes() {
   return (
     <>
       <Header />
-      <Button onClick={ handleAllBtn } data-testid="filter-by-all-btn">All</Button>
-      <Button onClick={ handleFoodBtn } data-testid="filter-by-food-btn">Food</Button>
-      <Button
+      <button
+        type="button"
+        onClick={ handleAllBtn }
+        data-testid="filter-by-all-btn"
+      >
+        All
+
+      </button>
+      <button
+        type="button"
+        onClick={ handleFoodBtn }
+        data-testid="filter-by-food-btn"
+      >
+        Food
+
+      </button>
+      <button
+        type="button"
         onClick={ handleDrinksBtn }
         data-testid="filter-by-drink-btn"
       >
         Drinks
-      </Button>
+      </button>
       { renderer && renderer.map((item, i) => (
         <CardFavorit key={ i } mealOrDrink={ item } index={ i } />
       ))}

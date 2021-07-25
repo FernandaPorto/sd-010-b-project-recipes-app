@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react';
-import { Button, Carousel } from 'react-bootstrap';
+import { Carousel } from 'react-bootstrap';
 import { useParams, useRouteMatch, useHistory } from 'react-router-dom';
 import Card from '../components/Card';
 import VideoPlayer from '../components/VideoPlayer';
@@ -104,11 +104,12 @@ export default function Details() {
                 }
               </p>
             </div>
-            <Button onClick={ handleShare }>
+            <button type="button" onClick={ handleShare }>
               { !copy ? (<img data-testid="share-btn" src={ shareIcon } alt="" />)
                 : (<p data-testid="share-btn">Link copiado!</p>)}
-            </Button>
-            <Button
+            </button>
+            <button
+              type="button"
               onClick={
                 () => handleFavorite(isFavorit, setFavorit, path, singleContent[0])
               }
@@ -118,7 +119,7 @@ export default function Details() {
                 src={ isFavorit.imagem }
                 alt=""
               />
-            </Button>
+            </button>
           </div>
           <div className="ingredients-container">
             <h4>
@@ -163,13 +164,14 @@ export default function Details() {
               </Carousel.Item>
             ))}
           </Carousel>
-          <Button
+          <button
+            type="button"
             className="start-recipe-btn"
             onClick={ () => handleRecipeInProgress(history, path, id) }
             data-testid="start-recipe-btn"
           >
             Iniciar Receita
-          </Button>
+          </button>
         </>)
   );
 }

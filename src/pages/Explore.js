@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Button } from 'react-bootstrap';
 
 import Footer from '../components/Footer';
 import Header from '../components/Header';
@@ -10,14 +9,14 @@ export default function Explore() {
     <>
       <Header />
       <Link to="/explorar/comidas">
-        <Button variant="primary" data-testid="explore-food">
+        <button type="button" data-testid="explore-food">
           Explorar Comidas
-        </Button>
+        </button>
       </Link>
       <Link to="/explorar/bebidas">
-        <Button variant="primary" data-testid="explore-drinks">
+        <button type="button" data-testid="explore-drinks">
           Explorar Bebidas
-        </Button>
+        </button>
       </Link>
       <Footer />
     </>

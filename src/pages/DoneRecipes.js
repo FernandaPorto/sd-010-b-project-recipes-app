@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { Button } from 'react-bootstrap';
 import CardRecipesDone from '../components/CardRecipesDone';
 import Header from '../components/Header';
 
@@ -30,14 +29,29 @@ export default function DoneRecipes() {
   return (
     <>
       <Header />
-      <Button onClick={ handleAllBtn } data-testid="filter-by-all-btn">All</Button>
-      <Button onClick={ handleFoodBtn } data-testid="filter-by-food-btn">Food</Button>
-      <Button
+      <button
+        type="button"
+        onClick={ handleAllBtn }
+        data-testid="filter-by-all-btn"
+      >
+        All
+
+      </button>
+      <button
+        type="button"
+        onClick={ handleFoodBtn }
+        data-testid="filter-by-food-btn"
+      >
+        Food
+
+      </button>
+      <button
+        type="button"
         onClick={ handleDrinksBtn }
         data-testid="filter-by-drink-btn"
       >
         Drinks
-      </Button>
+      </button>
       { renderer && renderer.map((item, i) => (
         <CardRecipesDone key={ i } mealOrDrink={ item } index={ i } />
       ))}

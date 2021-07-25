@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { Button } from 'react-bootstrap';
 import { Link, useHistory, useRouteMatch } from 'react-router-dom';
 
 import Footer from '../components/Footer';
@@ -41,23 +40,23 @@ function ExploreFoods() {
     <>
       <Header />
       <Link to={ ingridientPath }>
-        <Button variant="primary" data-testid="explore-by-ingredient">
+        <button type="button" data-testid="explore-by-ingredient">
           Por Ingredientes
-        </Button>
+        </button>
       </Link>
       {verifyPath && (
         <Link to="/explorar/comidas/area">
-          <Button variant="primary" data-testid="explore-by-area">
+          <button type="button" data-testid="explore-by-area">
             Por Local de Origem
-          </Button>
+          </button>
         </Link>)}
-      <Button
-        variant="primary"
+      <button
+        type="button"
         data-testid="explore-surprise"
         onClick={ handleSurpriseMe }
       >
         Me Surpreenda!
-      </Button>
+      </button>
       <Footer />
     </>
   );

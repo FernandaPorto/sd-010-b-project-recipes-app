@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Button } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
 
 import Footer from '../components/Footer';
@@ -29,30 +28,30 @@ export default function Profile() {
         <p data-testid="profile-email">
           { userEmail }
         </p>
-        <Button
+        <button
           data-testid="profile-done-btn"
           name="receitas-feitas"
           onClick={ clickButton }
           type="button"
         >
           Receitas Feitas
-        </Button>
-        <Button
+        </button>
+        <button
           data-testid="profile-favorite-btn"
           type="button"
           name="receitas-favoritas"
           onClick={ clickButton }
         >
           Receitas Favoritas
-        </Button>
-        <Button
+        </button>
+        <button
           data-testid="profile-logout-btn"
           type="button"
           name="login"
           onClick={ (e) => { clickButton(e); localStorage.clear(); } }
         >
           Sair
-        </Button>
+        </button>
         <Footer />
       </>
     );

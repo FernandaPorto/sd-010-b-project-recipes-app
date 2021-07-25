@@ -1,10 +1,6 @@
 import React, { useState } from 'react';
-import { // useParams,
-  Link,
-  useRouteMatch,
-} from 'react-router-dom';
+import { Link, useRouteMatch } from 'react-router-dom';
 
-import { Navbar, Container } from 'react-bootstrap';
 import profileIcon from '../images/profileIcon.svg';
 import searchIcon from '../images/searchIcon.svg';
 import SearchBar from './SearchBar';
@@ -34,26 +30,24 @@ export default function Header() {
     case '/explorar/comidas/area':
       return (
         <>
-          <Navbar bg="dark" variant="dark">
-            <Container>
-              <Link to="/perfil">
-                <img
-                  data-testid="profile-top-btn"
-                  src={ profileIcon }
-                  alt="profile-icon"
-                />
-              </Link>
-              <Navbar.Brand href="/">
-                <h1 data-testid="page-title">{ getTitle() }</h1>
-              </Navbar.Brand>
-              <button
-                type="button"
-                onClick={ () => setShowSearch(!(showSearch)) }
-              >
-                <img data-testid="search-top-btn" src={ searchIcon } alt="search-icon" />
-              </button>
-            </Container>
-          </Navbar>
+          <nav>
+            <Link to="/perfil">
+              <img
+                data-testid="profile-top-btn"
+                src={ profileIcon }
+                alt="profile-icon"
+              />
+            </Link>
+            <Link href="/">
+              <h1 data-testid="page-title">{ getTitle() }</h1>
+            </Link>
+            <button
+              type="button"
+              onClick={ () => setShowSearch(!(showSearch)) }
+            >
+              <img data-testid="search-top-btn" src={ searchIcon } alt="search-icon" />
+            </button>
+          </nav>
           {!showSearch && (
             <div>
               <SearchBar />
@@ -68,14 +62,12 @@ export default function Header() {
     case '/receitas-favoritas':
     case '/perfil':
       return (
-        <Navbar bg="dark" variant="dark">
-          <Container>
-            <Link to="/perfil">
-              <img data-testid="profile-top-btn" src={ profileIcon } alt="" />
-            </Link>
-            <h1 data-testid="page-title">{ getTitle() }</h1>
-          </Container>
-        </Navbar>
+        <nav>
+          <Link to="/perfil">
+            <img data-testid="profile-top-btn" src={ profileIcon } alt="" />
+          </Link>
+          <h1 data-testid="page-title">{ getTitle() }</h1>
+        </nav>
       );
     default:
       return ('');

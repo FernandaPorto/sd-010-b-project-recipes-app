@@ -1,6 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { useRouteMatch, Link } from 'react-router-dom';
-import { Button } from 'react-bootstrap';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import RecipesContext from '../context/RecipesContext';
@@ -113,21 +112,23 @@ export default function MainPage() {
 
           <section className="container-buttons">
             {categoriesList.map((category) => (
-              <Button
+              <button
+                type="button"
                 className="category-buttons"
                 data-testid={ `${category.strCategory}-category-filter` }
                 key={ category.strCategory }
                 onClick={ () => handleCategoryFilter(category.strCategory) }
               >
                 {category.strCategory.split(/\W/g)[0]}
-              </Button>))}
-            <Button
+              </button>))}
+            <button
+              type="button"
               className="category-buttons"
               data-testid="All-category-filter"
               onClick={ handleAllClick }
             >
               All
-            </Button>
+            </button>
           </section>
 
           {isLoadingCat ? (<OtherLoader category={ categorySelected } />)

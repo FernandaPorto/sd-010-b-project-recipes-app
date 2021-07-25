@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { Button } from 'react-bootstrap';
 import { useParams, useRouteMatch, useHistory } from 'react-router-dom';
 import { saveFavoriteRecipe, saveFinished } from '../storage/localStorage';
 
@@ -110,12 +109,13 @@ export default function InProgress() {
 
           <p data-testid="recipe-title">{renderer[0][title]}</p>
 
-          <Button onClick={ handleShare }>
+          <button type="button" onClick={ handleShare }>
             { !copy ? (<img data-testid="share-btn" src={ shareIcon } alt="" />)
               : (<p data-testid="share-btn">Link copiado!</p>)}
-          </Button>
+          </button>
 
-          <Button
+          <button
+            type="button"
             onClick={ () => handleFavoriteBtn(isFavorit, setFavorit, path, renderer[0]) }
           >
             <img
@@ -123,7 +123,7 @@ export default function InProgress() {
               src={ isFavorit.imagem }
               alt=""
             />
-          </Button>
+          </button>
 
           <p data-testid="recipe-category">{ renderer[0].strCategory }</p>
 
@@ -147,13 +147,14 @@ export default function InProgress() {
 
           <p data-testid="instructions">{ renderer[0].strInstructions }</p>
 
-          <Button
+          <button
+            type="button"
             data-testid="finish-recipe-btn"
             onClick={ () => handleFinished(history, path, renderer[0]) }
             disabled={ isDisabled }
           >
             Finalizar Receita
-          </Button>
+          </button>
         </>)
   );
 }
