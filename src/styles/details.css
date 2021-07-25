@@ -20,10 +20,6 @@
   width: 300px;
 }
 
-/* h3 {
-  margin: 0;
-} */
-
 .favorit-share-btns {
   align-items: baseline;
   display: flex;
@@ -47,7 +43,7 @@
   align-items: flex-start;
   display: flex;
   flex-direction: column;
-  margin-right: 94.38px;
+  margin-right: 54.38px;
 }
 
 .ingredients-container p {
