@@ -86,12 +86,12 @@ export default function Details() {
   return (
     isLoading ? (<Loading />)
       : (
-        <>
+        <section className="details-container">
           <img
+            className="recipe-photo"
             data-testid="recipe-photo"
             src={ singleContent[0][imgSrc] }
             alt={ singleContent[0][title] }
-            width="200px"
           />
           <div className="recipe-heading-container">
             <div className="info-heading">
@@ -104,22 +104,24 @@ export default function Details() {
                 }
               </p>
             </div>
-            <button type="button" onClick={ handleShare }>
-              { !copy ? (<img data-testid="share-btn" src={ shareIcon } alt="" />)
-                : (<p data-testid="share-btn">Link copiado!</p>)}
-            </button>
-            <button
-              type="button"
-              onClick={
-                () => handleFavorite(isFavorit, setFavorit, path, singleContent[0])
-              }
-            >
-              <img
-                data-testid="favorite-btn"
-                src={ isFavorit.imagem }
-                alt=""
-              />
-            </button>
+            <div className="favorit-share-btns">
+              <button type="button" onClick={ handleShare }>
+                { !copy ? (<img data-testid="share-btn" src={ shareIcon } alt="" />)
+                  : (<p data-testid="share-btn">Link copiado!</p>)}
+              </button>
+              <button
+                type="button"
+                onClick={
+                  () => handleFavorite(isFavorit, setFavorit, path, singleContent[0])
+                }
+              >
+                <img
+                  data-testid="favorite-btn"
+                  src={ isFavorit.imagem }
+                  alt=""
+                />
+              </button>
+            </div>
           </div>
           <div className="ingredients-container">
             <h4>
@@ -134,6 +136,9 @@ export default function Details() {
             ))}
           </div>
           <div className="instructions-video-container">
+            <h4>
+              Instructions
+            </h4>
             <p data-testid="instructions">
               {singleContent[0].strInstructions}
             </p>
@@ -145,6 +150,9 @@ export default function Details() {
               />
             ) }
           </div>
+          <h4>
+            Recomendations
+          </h4>
           <Carousel>
             { recomendations.map((item, i) => (
               <Carousel.Item
@@ -156,7 +164,7 @@ export default function Details() {
                   index={ i }
                   testId="recomendation"
                 />
-                {/* <CardRecomendation
+                {/* <Card
                 mealOrDrink={ array[i + 1] || array[0] }
                 index={ i + 1 }
                 testId="recomendation"
@@ -172,6 +180,6 @@ export default function Details() {
           >
             Iniciar Receita
           </button>
-        </>)
+        </section>)
   );
 }

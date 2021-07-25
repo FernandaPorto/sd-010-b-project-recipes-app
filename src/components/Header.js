@@ -5,9 +5,11 @@ import profileIcon from '../images/profileIcon.svg';
 import searchIcon from '../images/searchIcon.svg';
 import SearchBar from './SearchBar';
 
+import '../styles/header.css';
+
 export default function Header() {
   const { path } = useRouteMatch();
-  const [showSearch, setShowSearch] = useState(true);
+  const [showSearch, setShowSearch] = useState(false);
 
   // Source: https://stackoverflow.com/questions/26574388/boolean-logic-in-switch-case-statement-java/26574416
 
@@ -30,7 +32,7 @@ export default function Header() {
     case '/explorar/comidas/area':
       return (
         <>
-          <nav>
+          <nav className="header-container">
             <Link to="/perfil">
               <img
                 data-testid="profile-top-btn"
@@ -39,7 +41,7 @@ export default function Header() {
               />
             </Link>
             <Link href="/">
-              <h1 data-testid="page-title">{ getTitle() }</h1>
+              <h2 data-testid="page-title">{ getTitle() }</h2>
             </Link>
             <button
               type="button"
@@ -48,7 +50,7 @@ export default function Header() {
               <img data-testid="search-top-btn" src={ searchIcon } alt="search-icon" />
             </button>
           </nav>
-          {!showSearch && (
+          {showSearch && (
             <div>
               <SearchBar />
             </div>)}
@@ -62,11 +64,11 @@ export default function Header() {
     case '/receitas-favoritas':
     case '/perfil':
       return (
-        <nav>
+        <nav className="header-container">
           <Link to="/perfil">
             <img data-testid="profile-top-btn" src={ profileIcon } alt="" />
           </Link>
-          <h1 data-testid="page-title">{ getTitle() }</h1>
+          <h2 data-testid="page-title">{ getTitle() }</h2>
         </nav>
       );
     default:

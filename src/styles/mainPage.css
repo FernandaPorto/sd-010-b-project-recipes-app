@@ -1,0 +1,46 @@
+.container-mainPaige {
+  align-content: center;
+  display: flex;
+  flex-flow: wrap column;
+}
+
+.container-category-buttons {
+  align-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  width: 80%;
+}
+
+
+.container-category-buttons button {
+  border-radius: 10px;
+  height: 25px;
+  margin: 5px 0;
+  width: 90px;
+}
+
+.container-cards {
+  display: flex;
+  flex-flow: wrap row;
+  justify-content: space-evenly;
+  width: 80%;
+}
+
+.card {
+  background-color: #d9d5ec4d;
+  border-radius: 15px;
+  padding: 10px;
+}
+
+a {
+  color: red;
+}
+
+.container-cards p {
+  width: 100px;
+}
+
+.container-cards img {
+  width: 100px;
+}

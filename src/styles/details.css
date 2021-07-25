@@ -1,3 +1,80 @@
+.details-container {
+  align-items: center;
+  display: flex;
+  flex-flow: wrap column;
+}
+
+.recipe-photo {
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  width: 350px;
+}
+
+.recipe-heading-container {
+  align-items: flex-start;
+  display: flex;
+  justify-content: space-between;
+  margin-left: 15px;
+  margin-top: 10px;
+  width: 300px;
+}
+
+/* h3 {
+  margin: 0;
+} */
+
+.favorit-share-btns {
+  align-items: baseline;
+  display: flex;
+  justify-content: space-evenly;
+  width: 150px;
+}
+
+.favorit-share-btns button {
+  border: none;
+}
+
+.info-heading {
+  align-items: baseline;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 120px;
+}
+
+.ingredients-container {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  margin-left: 15px;
+}
+
+.ingredients-container p {
+  margin-left: 15px;
+}
+
+.instructions-video-container {
+  display: flex;
+  flex-direction: column;
+  margin-left: 15px;
+  width: 80%;
+}
+
+.instructions-video-container p {
+  margin-left: 8px;
+  text-align: justify;
+  width: 95%;
+}
+
+.instructions-video-container iframe {
+  margin-left: 8px;
+  width: 95%;
+}
+
+.recomendations-container {
+  width: 150px;
+}
+
 .start-recipe-btn {
   bottom: 0;
   position: fixed;

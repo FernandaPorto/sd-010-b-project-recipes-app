@@ -11,6 +11,7 @@ import { getRandomData,
 } from '../services/apiRequest';
 import Loading from '../components/Loading';
 import OtherLoader from '../components/OtherLoader';
+import '../styles/mainPage.css';
 
 const TWELVE = 12;
 const FIVE = 5;
@@ -110,7 +111,7 @@ export default function MainPage() {
         <section className="container-mainPaige">
           <Header />
 
-          <section className="container-buttons">
+          <section className="container-category-buttons">
             {categoriesList.map((category) => (
               <button
                 type="button"
@@ -130,10 +131,9 @@ export default function MainPage() {
               All
             </button>
           </section>
-
           {isLoadingCat ? (<OtherLoader category={ categorySelected } />)
             : (
-              <>
+              <section className="container-cards">
                 {renderer.map((item, i) => (
                   <Link
                     className="link-card"
@@ -143,7 +143,7 @@ export default function MainPage() {
                     <Card mealOrDrink={ item } index={ i } testId="recipe" />
                   </Link>))}
                 <button type="button" onClick={ handleMoreCards }>More Recipes</button>
-              </>
+              </section>
             )}
           <Footer />
         </section>

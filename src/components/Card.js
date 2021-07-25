@@ -13,19 +13,18 @@ export default function Card({ mealOrDrink, index, testId }) {
     : [mealOrDrink.strDrinkThumb, mealOrDrink.strDrink];
 
   return (
-    <section data-testid={ `${index}-${testId}-card` }>
+    <section className="card" data-testid={ `${index}-${testId}-card` }>
       <img
-        width="150px"
         data-testid={ `${index}-card-img` }
         src={ imgSrcKey || imgSrcRecKey }
         alt={ titleKey || titleRecKey }
       />
-      <h3
+      <p
         data-testid={ (testId === 'recipe') ? `${index}-card-name`
           : `${index}-recomendation-title` }
       >
         {titleKey || titleRecKey}
-      </h3>
+      </p>
     </section>
   );
 }

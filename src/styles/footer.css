@@ -1,4 +1,8 @@
 .footer-container {
   bottom: 0;
+  display: flex;
+  justify-content: space-evenly;
+  padding: 4px;
   position: fixed;
+  width: 100%;
 }
