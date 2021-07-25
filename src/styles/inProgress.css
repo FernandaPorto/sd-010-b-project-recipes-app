@@ -1,0 +1,23 @@
+.main-container-inProgress {
+  align-items: center;
+  display: flex;
+  flex-flow: wrap column;
+  padding: 0 0 50px;
+}
+
+.info-container {
+  align-items: flex-start;
+  display: flex;
+  justify-content: space-between;
+  margin-left: 15px;
+  margin-top: 10px;
+  width: 300px;
+}
+
+.title-type-area {
+  align-items: baseline;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 120px;
+}

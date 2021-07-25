@@ -1,6 +1,7 @@
 import React from 'react';
 import { useRouteMatch } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import '../styles/card.css';
 
 export default function Card({ mealOrDrink, index, testId }) {
   const { path } = useRouteMatch();

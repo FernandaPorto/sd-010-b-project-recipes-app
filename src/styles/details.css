@@ -2,6 +2,7 @@
   align-items: center;
   display: flex;
   flex-flow: wrap column;
+  padding: 0 0 50px;
 }
 
 .recipe-photo {
@@ -46,7 +47,7 @@
   align-items: flex-start;
   display: flex;
   flex-direction: column;
-  margin-left: 15px;
+  margin-right: 94.38px;
 }
 
 .ingredients-container p {
@@ -56,26 +57,32 @@
 .instructions-video-container {
   display: flex;
   flex-direction: column;
-  margin-left: 15px;
   width: 80%;
 }
 
 .instructions-video-container p {
-  margin-left: 8px;
+  margin-left: 15px;
   text-align: justify;
   width: 95%;
 }
 
 .instructions-video-container iframe {
-  margin-left: 8px;
+  margin-left: 15px;
   width: 95%;
 }
 
 .recomendations-container {
-  width: 150px;
+  width: 200px;
 }
 
 .start-recipe-btn {
+  background-color: green;
+  border: none;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
   bottom: 0;
+  color: yellow;
+  opacity: 0.5;
+  padding: 5px 10px;
   position: fixed;
 }

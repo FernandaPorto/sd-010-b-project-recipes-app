@@ -1,11 +1,16 @@
 .header-container {
-  align-items: center;
   display: flex;
-  justify-content: space-evenly;
-  padding: 4px;
   width: 100%;
 }
 
-.header-container button {
+.header-nav {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding: 4px;
+  width: 80%;
+}
+
+.header-nav button {
   border: none;
 }

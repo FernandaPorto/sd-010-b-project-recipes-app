@@ -10,6 +10,8 @@ import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 
 import RecipesContext from '../context/RecipesContext';
 
+import '../styles/inProgress.css';
+
 function handleIngredientsData(list) {
   return list.map((el, i, arr) => (
     (el[0].includes('Ingredient')) && ([`${el[1]
@@ -100,53 +102,66 @@ export default function InProgress() {
   return (
     !renderer[0] ? (<h1>Loading...</h1>)
       : (
-        <>
+        <section className="main-container-inProgress">
           <img
+            className="recipe-photo"
             data-testid="recipe-photo"
             src={ renderer[0][imgSrc] }
             alt={ renderer[0][title] }
           />
+          <div className="info-container">
+            <div className="title-type-area">
+              <h3 data-testid="recipe-title">{renderer[0][title]}</h3>
+              <p data-testid="recipe-category">{ renderer[0].strCategory }</p>
+            </div>
+            <div className="favorit-share-btns">
+              <button type="button" onClick={ handleShare }>
+                { !copy ? (<img data-testid="share-btn" src={ shareIcon } alt="" />)
+                  : (<p data-testid="share-btn">Link copiado!</p>)}
+              </button>
 
-          <p data-testid="recipe-title">{renderer[0][title]}</p>
-
-          <button type="button" onClick={ handleShare }>
-            { !copy ? (<img data-testid="share-btn" src={ shareIcon } alt="" />)
-              : (<p data-testid="share-btn">Link copiado!</p>)}
-          </button>
-
-          <button
-            type="button"
-            onClick={ () => handleFavoriteBtn(isFavorit, setFavorit, path, renderer[0]) }
-          >
-            <img
-              data-testid="favorite-btn"
-              src={ isFavorit.imagem }
-              alt=""
-            />
-          </button>
-
-          <p data-testid="recipe-category">{ renderer[0].strCategory }</p>
-
-          {handleIngredientsData(ingredientsList).map((item, i) => (
-            <label key={ item } htmlFor={ `${i}-ingredient-step` }>
-              <p
-                data-testid={ `${i}-ingredient-step` }
+              <button
+                type="button"
+                onClick={
+                  () => handleFavoriteBtn(isFavorit, setFavorit, path, renderer[0])
+                }
               >
-                <input
-                  id={ `${i}-ingredient-step` }
-                  name={ `step-${i + 1}` }
-                  type="checkbox"
-                  value={ false }
-                  className=""
-                  onChange={ handleCheckBox }
+                <img
+                  data-testid="favorite-btn"
+                  src={ isFavorit.imagem }
+                  alt=""
                 />
-                {` ${item}`}
-              </p>
-            </label>
-          ))}
-
-          <p data-testid="instructions">{ renderer[0].strInstructions }</p>
-
+              </button>
+            </div>
+          </div>
+          <div className="ingredients-container">
+            <h4>
+              Ingredients
+            </h4>
+            {handleIngredientsData(ingredientsList).map((item, i) => (
+              <label key={ item } htmlFor={ `${i}-ingredient-step` }>
+                <p
+                  data-testid={ `${i}-ingredient-step` }
+                >
+                  <input
+                    id={ `${i}-ingredient-step` }
+                    name={ `step-${i + 1}` }
+                    type="checkbox"
+                    value={ false }
+                    className=""
+                    onChange={ handleCheckBox }
+                  />
+                  {` ${item}`}
+                </p>
+              </label>
+            ))}
+          </div>
+          <div className="instructions-video-container">
+            <h4>
+              Instructions
+            </h4>
+            <p data-testid="instructions">{ renderer[0].strInstructions }</p>
+          </div>
           <button
             type="button"
             data-testid="finish-recipe-btn"
@@ -155,6 +170,6 @@ export default function InProgress() {
           >
             Finalizar Receita
           </button>
-        </>)
+        </section>)
   );
 }

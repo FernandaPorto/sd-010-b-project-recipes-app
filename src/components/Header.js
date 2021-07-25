@@ -31,8 +31,8 @@ export default function Header() {
     case '/bebidas':
     case '/explorar/comidas/area':
       return (
-        <>
-          <nav className="header-container">
+        <div className="header-container">
+          <nav className="header-nav">
             <Link to="/perfil">
               <img
                 data-testid="profile-top-btn"
@@ -54,7 +54,7 @@ export default function Header() {
             <div>
               <SearchBar />
             </div>)}
-        </>);
+        </div>);
     case '/explorar':
     case '/explorar/comidas':
     case '/explorar/comidas/ingredientes':
