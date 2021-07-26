@@ -120,7 +120,7 @@ export default function MainPage() {
                 key={ category.strCategory }
                 onClick={ () => handleCategoryFilter(category.strCategory) }
               >
-                {category.strCategory.split(/\W/g)[0]}
+                {category.strCategory}
               </button>))}
             <button
               type="button"

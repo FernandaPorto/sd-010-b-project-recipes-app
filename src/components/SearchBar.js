@@ -3,6 +3,8 @@ import { useRouteMatch, useHistory } from 'react-router-dom';
 import { fetchAPI } from '../services/apiRequest';
 import RecipesContext from '../context/RecipesContext';
 
+import '../styles/searchBar.css';
+
 const TWELVE = 12;
 export default function SearchBar() {
   const { path } = useRouteMatch();
@@ -56,48 +58,55 @@ export default function SearchBar() {
 
   return (
     <div className="search-container">
-      <input
-        type="text"
-        data-testid="search-input"
-        onChange={ handleChange }
-      />
-      <label htmlFor="ingredients">
-        Ingredientes
+      <div className="ipt-pls-sch-btn">
         <input
-          id="ingredients"
-          name="search"
-          type="radio"
-          data-testid="ingredient-search-radio"
+          type="text"
+          data-testid="search-input"
           onChange={ handleChange }
         />
-      </label>
-      <label htmlFor="name">
-        Nome
-        <input
-          id="name"
-          name="search"
-          type="radio"
-          data-testid="name-search-radio"
-          onChange={ handleChange }
-        />
-      </label>
-      <label htmlFor="char">
-        Primeira letra
-        <input
-          id="char"
-          name="search"
-          type="radio"
-          data-testid="first-letter-search-radio"
-          onChange={ handleChange }
-        />
-      </label>
-      <button
-        type="button"
-        data-testid="exec-search-btn"
-        onClick={ handleClick }
-      >
-        Search
-      </button>
+        <button
+          type="button"
+          data-testid="exec-search-btn"
+          onClick={ handleClick }
+        >
+          Search
+        </button>
+      </div>
+      <div className="radio-ipts">
+        <label htmlFor="ingredients">
+          <input
+            id="ingredients"
+            name="search"
+            type="radio"
+            data-testid="ingredient-search-radio"
+            onChange={ handleChange }
+          />
+          {' '}
+          Ingredientes
+        </label>
+        <label htmlFor="name">
+          <input
+            id="name"
+            name="search"
+            type="radio"
+            data-testid="name-search-radio"
+            onChange={ handleChange }
+          />
+          {' '}
+          Nome
+        </label>
+        <label htmlFor="char">
+          <input
+            id="char"
+            name="search"
+            type="radio"
+            data-testid="first-letter-search-radio"
+            onChange={ handleChange }
+          />
+          {' '}
+          Primeira letra
+        </label>
+      </div>
     </div>
   );
 }

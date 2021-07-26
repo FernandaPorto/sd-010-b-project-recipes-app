@@ -1,0 +1,34 @@
+.search-container {
+  align-items: center;
+  display: flex;
+  flex-flow: wrap column;
+  max-width: 100%;
+}
+
+.ipt-pls-sch-btn {
+  display: flex;
+  flex-flow: wrap row;
+  width: 95%;
+}
+
+.ipt-pls-sch-btn input {
+  width: 70%;
+}
+
+.ipt-pls-sch-btn button {
+  border: none;
+  width: 30%;
+}
+
+.radio-ipts {
+  max-width: 95%;
+}
+
+.radio-ipts label {
+  font-size: small;
+  font-weight: 900;
+}
+
+.radio-ipts input {
+  margin-left: 5px;
+}

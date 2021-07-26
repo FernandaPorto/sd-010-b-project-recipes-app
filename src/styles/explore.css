@@ -11,15 +11,22 @@
 
 .explore-btns {
   display: flex;
-  flex-flow: wrap column;
-  height: 60vh;
-  margin: 15vh;
+  flex-flow: wrap row;
+  height: 90vh;
 }
 
 .explore-btns button {
   background-color: transparent;
   border: solid 0.8px grey;
   border-radius: 25px;
-  margin-top: 15vh;
+  margin: 2vh;
+  margin-top: 35vh;
   padding: 0 10px;
+  transition: 0.3s;
+  width: 100px;
+}
+
+.explore-btns button:hover {
+  background-color: #3e8e41;
+  color: white;
 }

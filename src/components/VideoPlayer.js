@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 function VideoPlayer({ videoLink, testID, recipeTitle }) {
-  console.log(videoLink);
   return (
     <div className="video-player">
       <iframe

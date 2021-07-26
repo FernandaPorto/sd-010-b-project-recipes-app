@@ -64,12 +64,14 @@ export default function Header() {
     case '/receitas-favoritas':
     case '/perfil':
       return (
-        <nav className="header-container">
-          <Link to="/perfil">
-            <img data-testid="profile-top-btn" src={ profileIcon } alt="" />
-          </Link>
-          <h2 data-testid="page-title">{ getTitle() }</h2>
-        </nav>
+        <div className="header-container">
+          <nav className="header-nav">
+            <Link to="/perfil">
+              <img data-testid="profile-top-btn" src={ profileIcon } alt="" />
+            </Link>
+            <h2 data-testid="page-title">{ getTitle() }</h2>
+          </nav>
+        </div>
       );
     default:
       return ('');
